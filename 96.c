@@ -1,47 +1,52 @@
-/*
-1.WAP that reads a matrix and identify if the given matrix is symmetric or not. (array contd with functions)
-*/
 #include<stdio.h>
-int transpose(int m1[][100], int m2[][100], int x, int y);
+
+int checkSymmetric(int matrix[][10], int size);
+
 void main()
 {
-    int x,y;
-    printf("Enter dimensions x,y of matrix:");
-    scanf("%d%d",&x,&y);
-    int m[x][y],m2[y][x];
-    transpose(m,m2,x,y);
-}
-int transpose(int m1[][100], int m2[][100], int x, int y)
-{
+    int size;
+    printf("Enter the size of square matrix: ");
+    scanf("%d", &size);
+
+    int matrix[10][10];
     printf("Enter the elements of matrix:\n");
-    for(int i=0;i<x;i++)
+    for(int i = 0; i < size; i++)
     {
-        for(int j=0;j<y;j++)
+        for(int j = 0; j < size; j++)
         {
-            printf("position [%d] [%d]",i+1,j+1);
-            scanf("%d",&m1[i][j]);
+            printf("Enter element [%d][%d]: ", i+1, j+1);
+            scanf("%d", &matrix[i][j]);
         }
     }
-    printf("Transpose of matrix is :\n");
-    for(int i=0;i<x;i++)
+
+    printf("\nThe entered matrix is:\n");
+    for(int i = 0; i < size; i++)
     {
-        for(int j=0;j<y;j++)
+        for(int j = 0; j < size; j++)
         {
-            m2[j][i]=m1[i][j];
-            printf("%d ",m2[j][i]);
+            printf("%d ", matrix[i][j]);
         }
         printf("\n");
     }
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            if (m1[i][j] != m2[i][j]) {
-                printf("The matrix is not symmetric.\n");
+
+    if(checkSymmetric(matrix, size))
+        printf("\nMatrix is symmetric!\n");
+    else
+        printf("\nMatrix is not symmetric!\n");
+}
+
+int checkSymmetric(int matrix[][10], int size)
+{
+    // A matrix is symmetric if it equals its transpose
+    // We can check this by comparing matrix[i][j] with matrix[j][i]
+    for(int i = 0; i < size; i++)
+    {
+        for(int j = 0; j < size; j++)
+        {
+            if(matrix[i][j] != matrix[j][i])
                 return 0;
-            }
         }
     }
-    printf("The matrix is symmetric.\n");
     return 1;
-
 }
 
