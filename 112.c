@@ -3,3 +3,7 @@
 
 (b)WAP to find second and third largest number using pointer.
 */
+#include <stdio.h>
+void main()
+{
+}
