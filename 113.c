@@ -3,3 +3,7 @@
 
 (b)WAP to sort n numbers in ascending order using pointer and function.
 */
+#include <stdio.h>
+void main()
+{
+}
